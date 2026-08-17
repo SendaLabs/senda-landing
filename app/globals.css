@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --forest: #173f35;
+  --forest-soft: #1f4d41;
+  --lime: #b7e46c;
+  --cream: #f4f1e8;
+  --cream-deep: #ebe6d8;
+  --stone: #d9d5ca;
+  --charcoal: #171918;
+  --background: var(--cream);
+  --foreground: var(--charcoal);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-forest: var(--forest);
+  --color-forest-soft: var(--forest-soft);
+  --color-lime: var(--lime);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-stone: var(--stone);
+  --color-charcoal: var(--charcoal);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-padding-top: 5.5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  font-family: var(--font-geist-sans), Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-feature-settings: "ss01" on, "cv11" on;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--charcoal);
+}
+
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+.editorial-display {
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  font-weight: 450;
+}
+
+.path-stroke {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes senda-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.85);
+    opacity: 0.08;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
