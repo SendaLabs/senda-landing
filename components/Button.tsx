@@ -11,7 +11,7 @@ const variants: Record<Variant, string> = {
   cream: "bg-cream text-forest hover:bg-cream-deep",
   outline:
     "border border-current bg-transparent text-inherit hover:bg-cream/10",
-  forest: "bg-forest text-cream hover:bg-forest-soft",
+  forest: "bg-[#183129] text-white hover:bg-forest-soft",
 };
 
 type Common = {

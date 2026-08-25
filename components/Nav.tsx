@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 
 export function Nav() {
   const { t } = useT();
-  const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
@@ -22,13 +21,6 @@ export function Nav() {
     { href: "#who-we-are", label: t.nav.who },
     { href: "#contact", label: t.nav.contact },
   ];
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 36);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const ids = links.map((l) => l.href.slice(1));
@@ -56,16 +48,9 @@ export function Nav() {
     };
   }, [open]);
 
-  const inverted = scrolled || open;
-
   return (
     <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,color,border-color] duration-500",
-        inverted
-          ? "border-b border-stone/70 bg-cream/80 text-forest backdrop-blur-md"
-          : "border-b border-transparent bg-transparent text-cream",
-      )}
+      className="fixed inset-x-0 top-0 z-50 rounded-b-2xl border-b border-stone/70 bg-white text-black"
     >
       <a
         href="#main"
@@ -78,7 +63,7 @@ export function Nav() {
         aria-label="Primary"
       >
         <a href="#top" className="relative z-10 shrink-0" aria-label="senda home">
-          <Logo />
+          <Logo markClassName="brightness-0" />
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">
@@ -90,8 +75,8 @@ export function Nav() {
                 className={cn(
                   "relative text-[0.92rem] tracking-[-0.01em] transition-opacity duration-300",
                   active === link.href.slice(1)
-                    ? "opacity-100"
-                    : "opacity-70 hover:opacity-100",
+                    ? "text-black opacity-100"
+                    : "text-black opacity-100 hover:opacity-70",
                 )}
               >
                 {link.label}
@@ -110,8 +95,8 @@ export function Nav() {
           <LanguageToggle className="relative z-10" />
           <Button
             href="#contact"
-            variant="lime"
-            className="hidden min-h-10 px-5 sm:inline-flex"
+            variant="forest"
+            className="hidden min-h-10 rounded-full px-5 sm:inline-flex"
           >
             {t.nav.try}
           </Button>
@@ -155,8 +140,8 @@ export function Nav() {
               <li className="pt-8">
                 <Button
                   href="#contact"
-                  variant="lime"
-                  className="w-full"
+                  variant="forest"
+                  className="w-full rounded-full"
                   onClick={() => setOpen(false)}
                 >
                   {t.nav.try}
