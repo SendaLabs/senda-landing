@@ -2,6 +2,7 @@
 
 :root {
   --forest: #173f35;
+  --forest-deep: #183129;
   --forest-soft: #1f4d41;
   --lime: #b7e46c;
   --cream: #f4f1e8;
@@ -16,6 +17,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
   --color-forest-soft: var(--forest-soft);
   --color-lime: var(--lime);
   --color-cream: var(--cream);

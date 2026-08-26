@@ -169,6 +169,13 @@ export const en = {
   brand: {
     line1: "Every resource has a path.",
     line2: "Senda makes it visible.",
+    botLabel: "SENDA",
+    messages: [
+      "Invoice received. Processing supplier details...",
+      "Invoice processed. Supplier: Logistics South. Amount: $1,240.00. Fund: Operations Q2. Approve?",
+      "Payment routed. Approval pending from Finance Management. Reference: #INV-2847",
+    ],
+    approve: "Yes, approve",
   },
   contact: {
     headline: "Ready to follow the path?",
@@ -365,6 +372,13 @@ export const es: typeof en = {
   brand: {
     line1: "Cada recurso tiene un camino.",
     line2: "Senda lo hace visible.",
+    botLabel: "SENDA",
+    messages: [
+      "Factura recibida. Procesando datos del proveedor...",
+      "Factura procesada. Proveedor: Logística Sur. Monto: $1,240.00. Fondo: Operaciones Q2. ¿Aprobar?",
+      "Pago enrutado. Aprobación pendiente de Gerencia Financiera. Referencia: #INV-2847",
+    ],
+    approve: "Sí, aprobar",
   },
   contact: {
     headline: "¿Listo para seguir el camino?",
