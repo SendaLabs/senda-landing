@@ -27,18 +27,13 @@ export function Logo({
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <Image
-        src="/images/logo.png"
+        src="/images/logoverde.png"
         alt=""
-        width={84}
-        height={108}
+        width={430}
+        height={101}
         className={cn("block h-8 w-auto", markClassName)}
         priority
       />
-      {wordmark ? (
-        <span className="text-[1.35rem] font-medium lowercase leading-none tracking-[0.01em]">
-          senda
-        </span>
-      ) : null}
     </span>
   );
 }

@@ -63,7 +63,7 @@ export function Nav() {
         aria-label="Primary"
       >
         <a href="#top" className="relative z-10 shrink-0" aria-label="senda home">
-          <Logo markClassName="brightness-0" />
+          <Logo />
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">
