@@ -59,7 +59,7 @@ function Marker({
       />
       <span
         className={cn(
-          "absolute top-1/2 whitespace-nowrap text-[12px] tracking-[0.05em] text-cream",
+          "absolute top-1/2 whitespace-nowrap text-[12px] tracking-[0.05em] text-charcoal",
           align === "right"
             ? "left-[14px] -translate-y-1/2"
             : "right-[14px] -translate-y-1/2",
