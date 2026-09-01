@@ -12,6 +12,14 @@ const socialLinks = {
     linkedin: "https://www.linkedin.com/in/delfina-luna-corradini-668795224/",
     twitter: "https://x.com/Delfiicorradini",
   },
+  "Nicolas Bustelo": {
+    telegram: "https://t.me/nicobustelo",
+    twitter: "https://x.com/nicobustelo__",
+  },
+  "Emilio Alfaro": {
+    telegram: "https://t.me/ml0aa",
+    twitter: "https://x.com/eml0aa",
+  },
 } as const;
 
 export function WhoWeAre() {
