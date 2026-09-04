@@ -2,157 +2,113 @@
 
 import { Button } from "@/components/Button";
 import { useT } from "@/lib/i18n";
-import { useState, type FormEvent, type InputHTMLAttributes } from "react";
-
-const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? "";
 
 export function Contact() {
   const { t } = useT();
-  const [status, setStatus] = useState<"idle" | "submitting" | "done" | "error">(
-    "idle",
-  );
-
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const data = new FormData(form);
-    setStatus("submitting");
-
-    try {
-      if (FORM_ENDPOINT) {
-        const response = await fetch(FORM_ENDPOINT, {
-          method: "POST",
-          body: data,
-          headers: { Accept: "application/json" },
-        });
-        if (!response.ok) throw new Error("Request failed");
-      } else {
-        await new Promise((resolve) => setTimeout(resolve, 700));
-      }
-      setStatus("done");
-      form.reset();
-    } catch {
-      setStatus("error");
-    }
-  }
 
   return (
     <section id="contact" className="bg-forest text-cream">
-      <div className="mx-auto grid max-w-[1440px] gap-16 px-5 py-24 md:px-8 md:py-32 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24 lg:px-12 lg:py-36">
-        <div>
-          <h2 className="editorial-display text-[clamp(2.3rem,5vw,4.4rem)]">
-            {t.contact.headline}
-          </h2>
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-cream/75">
-            {t.contact.body}
-          </p>
-        </div>
+      <div className="mx-auto max-w-[1440px] px-5 py-16 md:px-8 md:py-24 lg:px-12 lg:py-28">
+        <div className="relative isolate min-h-[480px] overflow-hidden rounded-[28px] bg-charcoal px-7 py-12 md:px-14 md:py-16 lg:min-h-[510px] lg:px-16 lg:py-20">
+          <div className="relative z-10 max-w-xl">
+            <p className="mb-6 text-xs font-medium tracking-[0.2em] text-lime uppercase">
+              Senda
+            </p>
+            <h2 className="editorial-display max-w-lg text-[clamp(2.5rem,5vw,4.7rem)]">
+              {t.contact.headline}
+            </h2>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-cream/70 md:text-lg">
+              {t.contact.body}
+            </p>
+            <Button
+              href="mailto:hello@senda.org"
+              variant="cream"
+              arrow="right"
+              className="mt-9"
+            >
+              {t.contact.submit}
+            </Button>
+          </div>
 
-        <div>
-          {status === "done" ? (
-            <div className="border border-lime/40 bg-forest-soft p-8">
-              <p className="text-2xl tracking-[-0.03em]">{t.contact.thanks}</p>
-              <p className="mt-3 max-w-sm text-cream/75">
-                {t.contact.thanksBody}
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={onSubmit} className="space-y-8" noValidate>
-              <Field label={t.contact.name} id="name" name="name" autoComplete="name" required />
-              <Field
-                label={t.contact.organization}
-                id="organization"
-                name="organization"
-                autoComplete="organization"
-                required
-              />
-              <Field label={t.contact.role} id="role" name="role" autoComplete="organization-title" />
-              <Field
-                label={t.contact.email}
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-              />
-
-              <fieldset>
-                <legend className="text-sm tracking-[0.12em] text-cream/70 uppercase">
-                  {t.contact.interest}
-                </legend>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {t.contact.interests.map((item) => (
-                    <label key={item} className="cursor-pointer">
-                      <input
-                        type="radio"
-                        name="interest"
-                        value={item}
-                        required
-                        className="peer sr-only"
-                      />
-                      <span className="inline-block border border-cream/25 px-4 py-2 text-sm text-cream/80 transition-colors peer-checked:border-lime peer-checked:bg-lime peer-checked:text-charcoal peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-lime">
-                        {item}
-                      </span>
-                    </label>
-                  ))}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -right-12 -top-24 h-[590px] w-[280px] [perspective:1200px] md:right-[18%] md:-top-28 md:w-[310px]">
+              <div className="absolute inset-0 translate-x-5 translate-y-7 rotate-[8deg] rounded-[38px] bg-black/45 blur-xl" />
+              <div className="relative h-full w-full rotate-[8deg] rounded-[38px] border-[10px] border-[#484b48] bg-cream shadow-[24px_32px_0_#0b0d0c,0_30px_60px_rgba(0,0,0,0.38)] [transform:rotateY(-14deg)_rotateX(3deg)] [transform-style:preserve-3d]">
+                <div className="absolute -right-3 top-12 h-32 w-3 rounded-r-full bg-[#292c2a] shadow-[inset_-1px_0_#626661]" />
+                <div className="absolute left-1/2 top-2 h-5 w-24 -translate-x-1/2 rounded-full bg-charcoal" />
+                <div className="m-5 mt-12 h-full overflow-hidden rounded-[20px] bg-[#edf0e9] p-5 text-charcoal">
+                <div className="flex items-center justify-between text-[9px] font-semibold">
+                  <span>9:41</span>
+                  <span>•••</span>
                 </div>
-              </fieldset>
-
-              <label className="block">
-                <span className="text-sm tracking-[0.12em] text-cream/70 uppercase">
-                  {t.contact.message}
+                <div className="mt-10 text-[11px] text-charcoal/55">Welcome back</div>
+                <div className="mt-1 text-2xl font-semibold tracking-[-0.06em]">
+                  $3,248.00
+                </div>
+                <div className="mt-5 h-24 rounded-xl bg-forest p-3 text-cream">
+                  <div className="text-[9px] text-cream/60">Resources tracked</div>
+                  <div className="mt-3 h-8 border-b border-lime/50 [clip-path:polygon(0_80%,15%_50%,28%_65%,40%_25%,52%_50%,66%_15%,78%_35%,100%_0,100%_100%,0_100%)] bg-lime/70" />
+                </div>
+                <div className="mt-5 space-y-3 text-[10px]">
+                  <div className="flex justify-between">
+                    <span>Education program</span>
+                    <strong>$1,240</strong>
+                  </div>
+                  <div className="h-px bg-charcoal/10" />
+                  <div className="flex justify-between">
+                    <span>Field operations</span>
+                    <strong>$860</strong>
+                  </div>
+                  <div className="h-px bg-charcoal/10" />
+                  <div className="flex justify-between">
+                    <span>Community work</span>
+                    <strong>$624</strong>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div className="absolute right-[3%] top-[30%] z-20 w-48 rotate-[-7deg] rounded-2xl bg-[#0d0e0e] p-5 text-cream shadow-2xl md:right-[6%] md:w-56">
+              <div className="flex items-center justify-between text-[10px] text-cream/60">
+                <span>↗ payable</span>
+                <span>◼</span>
+              </div>
+              <div className="mt-10 text-xl leading-none tracking-[-0.05em]">
+                Clare
+                <br />
+                Bamford
+              </div>
+              <div className="mt-8 flex justify-between text-[9px] text-cream/55">
+                <span>•••• 1292</span>
+                <span>08/28</span>
+              </div>
+            </div>
+            <div className="absolute left-[47%] top-[18%] z-20 w-36 rounded-2xl bg-cream p-4 text-charcoal shadow-xl md:left-[51%] md:w-40">
+              <div className="flex items-center gap-2 text-[9px] text-charcoal/55">
+                <span className="grid size-6 place-items-center rounded-full bg-lime text-[11px]">
+                  ↗
                 </span>
-                <textarea
-                  name="message"
-                  rows={4}
-                  className="mt-2 w-full resize-y border-0 border-b border-cream/25 bg-transparent py-3 text-cream outline-none transition-colors placeholder:text-cream/30 focus:border-lime"
-                />
-              </label>
-
-              {status === "error" ? (
-                <p className="text-sm text-lime" role="alert">
-                  {t.contact.error}
-                </p>
-              ) : null}
-
-              <Button
-                type="submit"
-                variant="lime"
-                disabled={status === "submitting"}
-                className="min-h-12"
-              >
-                {status === "submitting" ? t.contact.sending : t.contact.submit}
-              </Button>
-            </form>
-          )}
-
-          <p className="mt-16 text-sm tracking-[0.16em] text-cream/50 uppercase">
-            {t.contact.footer}
-          </p>
+                Total Savings
+              </div>
+              <strong className="mt-2 block text-lg tracking-[-0.04em]">
+                $2,352.754
+              </strong>
+              <div className="mt-1 text-[8px] text-charcoal/50">
+                2 of 5 goals complete
+              </div>
+            </div>
+            <div className="absolute bottom-[12%] left-[42%] z-20 flex w-40 items-center gap-3 rounded-2xl bg-cream p-4 text-charcoal shadow-xl md:left-[46%]">
+              <span className="grid size-8 shrink-0 place-items-center rounded-full bg-lime text-base">
+                ◒
+              </span>
+              <div>
+                <div className="text-[9px] text-charcoal/55">Transfer</div>
+                <strong className="text-base">$9,564</strong>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function Field({
-  label,
-  id,
-  ...props
-}: {
-  label: string;
-  id: string;
-} & InputHTMLAttributes<HTMLInputElement>) {
-  return (
-    <label htmlFor={id} className="block">
-      <span className="text-sm tracking-[0.12em] text-cream/70 uppercase">
-        {label}
-      </span>
-      <input
-        id={id}
-        {...props}
-        className="mt-2 w-full border-0 border-b border-cream/25 bg-transparent py-3 text-cream outline-none transition-colors placeholder:text-cream/30 focus:border-lime"
-      />
-    </label>
   );
 }
