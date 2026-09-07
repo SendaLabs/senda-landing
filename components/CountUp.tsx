@@ -21,14 +21,11 @@ export function CountUp({
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const reduce = useReducedMotion();
-  const [display, setDisplay] = useState(reduce ? value : 0);
+  const [display, setDisplay] = useState(0);
 
   useEffect(() => {
     if (!inView) return;
-    if (reduce) {
-      setDisplay(value);
-      return;
-    }
+    if (reduce) return;
 
     const start = performance.now();
     let frame: number;
@@ -47,7 +44,7 @@ export function CountUp({
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {display.toLocaleString("en-US")}
+      {(reduce ? value : display).toLocaleString("en-US")}
       {suffix}
     </span>
   );

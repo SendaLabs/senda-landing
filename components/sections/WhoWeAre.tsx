@@ -5,8 +5,13 @@ import { Reveal } from "@/components/Reveal";
 import { useT } from "@/lib/i18n";
 
 const names = ["Emilio Alfaro", "Delfina Corradini", "Nicolas Bustelo"];
+const profileImages = {
+  "Delfina Corradini": "/images/P_Delfina.svg",
+  "Nicolas Bustelo": "/images/P_Nicolas.png.svg",
+  "Emilio Alfaro": "/images/P_Emilio.svg",
+} as const;
 const social = ["telegram", "linkedin", "twitter"] as const;
-const socialLinks = {
+const socialLinks: Record<string, Partial<Record<(typeof social)[number], string>>> = {
   "Delfina Corradini": {
     telegram: "https://t.me/Delficorradini",
     linkedin: "https://www.linkedin.com/in/delfina-luna-corradini-668795224/",
@@ -28,42 +33,47 @@ export function WhoWeAre() {
 
   return (
     <section id="who-we-are" className="bg-white text-charcoal">
-      <div className="mx-auto max-w-[1440px] px-5 py-24 md:px-8 md:py-32 lg:px-12 lg:py-36">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+      <div className="mx-auto max-w-[1440px] px-5 py-12 md:px-8 md:py-16 lg:px-12 lg:py-20">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.6fr_0.85fr] lg:gap-10">
           <div>
-            <Reveal>
-              <h2 className="editorial-display max-w-xl text-[clamp(2rem,4vw,3.6rem)]">
-                {t.team.headline}
-              </h2>
-            </Reveal>
             <Reveal delay={0.08}>
-              <div className="mt-6 max-w-lg text-base leading-relaxed text-charcoal/75 md:text-lg">
-                <p>{t.team.p1}</p>
+              <div className="team-statement mt-5 mx-auto max-w-3xl px-4 py-7 text-center text-[clamp(1.55rem,2.25vw,2.35rem)] leading-[1.08] tracking-[-0.03em] text-charcoal sm:px-8 sm:py-8">
+                <p>
+                  {t.team.statement.before}
+                  <strong className="font-semibold text-[#123C36]">{t.team.statement.tool}</strong>
+                  {t.team.statement.middle}
+                  <strong className="font-semibold text-[#123C36]">{t.team.statement.improve}</strong>
+                  {t.team.statement.firstAfter}
+                </p>
+                <p className="mt-5">
+                  {t.team.statement.second}
+                </p>
               </div>
             </Reveal>
 
-            <ul className="mt-14 grid max-w-xl grid-cols-3 gap-3 sm:gap-8">
+            <p className="mb-8 mt-5 text-center text-xs font-semibold tracking-[0.18em] text-[#123C36]/60 uppercase">{t.team.label}</p>
+            <ul className="mx-auto grid max-w-xl grid-cols-3 gap-3 sm:gap-6">
               {team.map((person, i) => (
                 <Reveal key={person.name} delay={0.05 * i}>
-                  <li className="relative text-center text-[#183129]">
+                  <li className="relative text-center text-[#123C36]">
                     <span
-                      className="mx-auto mb-4 flex size-20 items-center justify-center rounded-full border border-[#183129]/30 bg-[#183129]/5 text-lg tracking-[0.08em] text-[#183129] shadow-[0_0_0_6px_rgba(255,255,255,0.9)] sm:size-24"
-                      aria-hidden="true"
+                      className="mx-auto mb-4 block size-34 overflow-hidden rounded-md border border-black bg-[#123C36]/5 sm:size-40 lg:size-44"
                     >
-                      {person.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
+                      <img
+                        src={profileImages[person.name as keyof typeof profileImages]}
+                        alt={person.name}
+                        className="size-full object-cover"
+                      />
                     </span>
                     <p className="text-sm tracking-[-0.01em] sm:text-base">{person.name}</p>
-                    <p className="mx-auto mt-1 max-w-[8rem] text-xs leading-snug text-[#183129]/60">{person.role}</p>
+                    <p className="mx-auto mt-1 max-w-[8rem] text-xs leading-snug text-[#123C36]/60">{person.role}</p>
                     <div className="mt-4 flex justify-center gap-2">
                       {social.map((network) => (
                         <a
                           key={network}
                           href={socialLinks[person.name as keyof typeof socialLinks]?.[network] ?? undefined}
                           aria-label={`${person.name} ${network}`}
-                          className="flex size-6 items-center justify-center rounded-full border border-[#183129] text-[#183129] transition-colors hover:bg-[#183129] hover:text-white"
+                          className="flex size-6 items-center justify-center rounded-full border border-[#123C36] text-[#123C36] transition-colors hover:bg-[#123C36] hover:text-white"
                           {...(socialLinks[person.name as keyof typeof socialLinks]
                             ? { target: "_blank", rel: "noreferrer" }
                             : {})}
@@ -80,7 +90,7 @@ export function WhoWeAre() {
 
           <Reveal delay={0.12} className="flex justify-center lg:justify-end">
             <LatinAmericaMap
-              className="w-full max-w-[18rem] sm:max-w-[22rem] lg:max-w-[26rem]"
+              className="w-full max-w-[19rem] sm:max-w-[23rem] lg:max-w-[28rem]"
               costaRica={t.team.costaRica}
               argentina={t.team.argentina}
             />

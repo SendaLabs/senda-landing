@@ -166,11 +166,11 @@ function JourneyStage({
         <motion.path
           d={JOURNEY_PATH}
           className="path-stroke"
-          stroke="#173F35"
+          stroke="#123C36"
           strokeWidth="1.4"
           style={reduce ? { pathLength: 1 } : { pathLength }}
         />
-        <circle cx="48" cy="72" r="4.5" fill="#B7E46C" />
+        <circle cx="48" cy="72" r="4.5" fill="#123C36" />
       </svg>
 
       <motion.div

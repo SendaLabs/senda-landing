@@ -7,11 +7,11 @@ import type { ComponentProps, ReactNode } from "react";
 type Variant = "lime" | "cream" | "outline" | "forest";
 
 const variants: Record<Variant, string> = {
-  lime: "bg-lime text-charcoal hover:bg-[#c5ec86]",
-  cream: "bg-cream text-[#183129] hover:bg-cream-deep",
+  lime: "bg-lime text-charcoal hover:bg-[#123C36]",
+  cream: "bg-cream text-[#123C36] hover:bg-cream-deep",
   outline:
     "border border-current bg-transparent text-inherit hover:bg-cream/10",
-  forest: "bg-[#183129] text-white hover:bg-forest-soft",
+  forest: "bg-[#123C36] text-white hover:bg-forest-soft",
 };
 
 type Common = {

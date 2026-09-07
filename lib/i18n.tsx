@@ -20,18 +20,21 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 const STORAGE_KEY = "senda-locale";
 
+function getInitialLocale(): Locale {
+  if (typeof window === "undefined") return "en";
+
+  const stored = window.localStorage.getItem(STORAGE_KEY);
+  if (stored === "en" || stored === "es") return stored;
+  return navigator.language.toLowerCase().startsWith("es") ? "es" : "en";
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
+  const [locale, setLocaleState] = useState<Locale>(getInitialLocale);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === "en" || stored === "es") {
-      setLocaleState(stored);
-    } else if (navigator.language.toLowerCase().startsWith("es")) {
-      setLocaleState("es");
-    }
-    setReady(true);
+    const frame = requestAnimationFrame(() => setReady(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
@@ -50,7 +53,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
+    <LanguageContext.Provider value={value}>
+      {ready ? children : null}
+    </LanguageContext.Provider>
   );
 }
 

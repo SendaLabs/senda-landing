@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --forest: #173f35;
-  --forest-deep: #183129;
-  --forest-soft: #1f4d41;
-  --lime: #b7e46c;
+  --forest: #123c36;
+  --forest-deep: #123c36;
+  --forest-soft: #123c36;
+  --lime: #123c36;
   --cream: #f4f1e8;
   --cream-deep: #ebe6d8;
   --stone: #d9d5ca;
@@ -54,6 +54,12 @@ body {
   letter-spacing: -0.04em;
   line-height: 0.95;
   font-weight: 450;
+}
+
+.team-statement {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.025em;
 }
 
 .hero-impact-line {

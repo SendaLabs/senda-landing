@@ -50,7 +50,7 @@ export function BrandStatement() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-15%" }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="relative min-h-[25rem] overflow-hidden rounded-[1.25rem] bg-[#123c31] p-6 sm:p-8"
+        className="relative min-h-[25rem] overflow-hidden rounded-[1.25rem] bg-[#123C36] p-6 sm:p-8"
       >
         <div className="ml-auto max-w-xl">
           <p className="mb-6 text-right text-xs tracking-[0.16em] text-cream/50 uppercase">{label}</p>
@@ -77,7 +77,7 @@ export function BrandStatement() {
       <motion.div
         variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0 } }}
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-        className={`max-w-[90%] rounded-xl px-4 py-3 text-sm leading-relaxed text-cream/90 ${sent ? "ml-auto bg-[#4bb486] text-charcoal" : "bg-cream/10"}`}
+        className={`max-w-[90%] rounded-xl px-4 py-3 text-sm leading-relaxed text-cream/90 ${sent ? "ml-auto bg-[#123C36] text-charcoal" : "bg-cream/10"}`}
       >
         {text}
       </motion.div>

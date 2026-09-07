@@ -51,7 +51,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-white text-[#183129]">
+    <footer className="bg-white text-[#123C36]">
       <div className="mx-auto grid max-w-[1440px] gap-9 px-5 py-8 md:px-8 lg:grid-cols-[minmax(240px,1fr)_2fr] lg:gap-12 lg:px-12 lg:py-10">
         <div>
           <a href="#top" aria-label="senda home">
@@ -71,7 +71,7 @@ export function Footer() {
                   <a
                     href={item.href}
                     aria-label={item.label}
-                    className="flex size-8 items-center justify-center rounded-full border border-[#183129]/25 text-[#183129] transition-colors hover:border-[#183129] hover:text-[#183129]"
+                    className="flex size-8 items-center justify-center rounded-full border border-[#123C36]/25 text-[#123C36] transition-colors hover:border-[#123C36] hover:text-[#123C36]"
                     rel="noreferrer"
                     target="_blank"
                   >
@@ -87,13 +87,13 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3">
             {columns.map((column) => (
               <div key={column.title}>
-                <h2 className="text-sm font-medium text-[#183129]">{column.title}</h2>
-                <ul className="mt-3 space-y-2 text-[0.88rem] text-[#183129]">
+                <h2 className="text-sm font-medium text-[#123C36]">{column.title}</h2>
+                <ul className="mt-3 space-y-2 text-[0.88rem] text-[#123C36]">
                   {column.links.map((link) => (
                     <li key={link.href}>
                       <a
                         href={link.href}
-                        className="transition-colors hover:text-[#183129]"
+                        className="transition-colors hover:text-[#123C36]"
                         rel={"icon" in link ? "noreferrer" : undefined}
                         target={"icon" in link ? "_blank" : undefined}
                       >
@@ -108,7 +108,7 @@ export function Footer() {
         </nav>
       </div>
       <div className="border-t border-black/10">
-        <p className="mx-auto max-w-[1440px] px-5 py-3 text-xs text-[#183129] md:px-8 lg:px-12">
+        <p className="mx-auto max-w-[1440px] px-5 py-3 text-xs text-[#123C36] md:px-8 lg:px-12">
           © 2026 Senda
         </p>
       </div>
